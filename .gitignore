@@ -15,3 +15,7 @@ venv/
 # IDE
 .vscode/
 .idea/
+
+# Dashboard
+dashboard/node_modules/
+dashboard/dist/
