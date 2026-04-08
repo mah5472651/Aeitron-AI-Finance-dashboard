@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import {
-  Radar, X, Plus, Play, Loader2, Clock, Globe, MessageSquare, Twitter,
+  Radar, X, Plus, Play, Loader2, Clock, Globe, MessageSquare, AtSign,
   UserPlus, Zap, CheckCircle2,
 } from 'lucide-react';
 import { useDiscovery } from '../../context/DiscoveryContext';
@@ -23,7 +23,7 @@ function getScoreTier(score) {
 // ─── Source config ───────────────────────────────────────────────────────────
 const SOURCE_CONFIG = {
   reddit: { icon: MessageSquare, color: '#ff4500', bg: 'rgba(255,69,0,0.12)', label: 'Reddit' },
-  twitter: { icon: Twitter, color: '#1d9bf0', bg: 'rgba(29,155,240,0.12)', label: 'Twitter / X' },
+  twitter: { icon: AtSign, color: '#1d9bf0', bg: 'rgba(29,155,240,0.12)', label: 'Twitter / X' },
   web: { icon: Globe, color: '#8c90a0', bg: 'rgba(140,144,160,0.12)', label: 'Web' },
 };
 
