@@ -40,6 +40,7 @@ export const BADGE_COLORS = {
   'Hot': 'bg-danger/15 text-danger',
   'Proposal Sent': 'bg-retainer/15 text-retainer',
   'Won': 'bg-success/15 text-success',
+  'Onboarding': 'bg-accent/15 text-accent',
   'Lost': 'bg-text-muted/15 text-text-muted',
   'Healthy': 'bg-success/15 text-success',
   'Error': 'bg-danger/15 text-danger',
@@ -104,6 +105,7 @@ export const LEAD_STAGE_PROBABILITIES = {
 
 export const ROADMAP_STAGES = ['Discovery', 'Strategy', 'Build', 'QA', 'Delivery', 'Maintenance'];
 
+export const DISCOVERY_STORAGE_KEY = 'aeitron_discovery';
 export const TEAM_STORAGE_KEY = 'aeitron_team';
 export const TEAM_ROLES = ['Outreach Specialist', 'Developer', 'Designer', 'Project Manager', 'QA Engineer', 'Consultant'];
 export const TEAM_STATUSES = ['Active', 'Away'];

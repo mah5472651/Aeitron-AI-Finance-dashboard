@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {
   LayoutDashboard, Receipt, Users, Kanban, FileText, Activity,
   LogOut, X, ChevronDown, ChevronRight, PanelLeftClose, PanelLeftOpen, UsersRound, Bot,
-  Sun, Moon,
+  Sun, Moon, Radar,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
@@ -26,6 +26,7 @@ const NAV_GROUPS = [
     items: [
       { icon: Users, label: 'Clients', view: 'clients' },
       { icon: Kanban, label: 'Leads', view: 'leads' },
+      { icon: Radar, label: 'Lead Discovery', view: 'discovery' },
     ],
   },
   {

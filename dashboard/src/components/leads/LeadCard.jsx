@@ -4,6 +4,7 @@ import { LEAD_STAGES } from '../../utils/constants';
 import { formatCurrency } from '../../utils/formatters';
 import { calcLeadScore, calcNeedsFollowup } from '../../utils/calculations';
 import QuickActionButton from '../shared/QuickActionButton';
+import CloseDealButton from './CloseDealButton';
 
 export default function LeadCard({ lead, onEdit, onDelete, onDragStart, onDragEnd }) {
   const { dispatch } = useLeads();
@@ -87,7 +88,11 @@ export default function LeadCard({ lead, onEdit, onDelete, onDragStart, onDragEn
       </select>
 
       <div className="mt-2.5">
-        <QuickActionButton label="Trigger Setup" workflowName="Lead Outreach" />
+        {lead.stage === 'Hot' || lead.stage === 'Proposal Sent' ? (
+          <CloseDealButton lead={lead} />
+        ) : (
+          <QuickActionButton label="Trigger Setup" workflowName="Lead Outreach" />
+        )}
       </div>
 
       <div className="flex items-center justify-between mt-2">

@@ -25,9 +25,11 @@ import AutomationForm from '../components/system/AutomationForm';
 import CreditMonitor from '../components/system/CreditMonitor';
 import TestEmailButton from '../components/system/TestEmailButton';
 import GoalTracker from '../components/cards/GoalTracker';
+import CEOBriefing from '../components/cards/CEOBriefing';
 import TeamGrid from '../components/team/TeamGrid';
 import TeamForm from '../components/team/TeamForm';
 import AgentGrid from '../components/agents/AgentGrid';
+import LeadDiscovery from '../components/discovery/LeadDiscovery';
 import PayoutCalculator from '../components/team/PayoutCalculator';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 import AICopilot from '../components/copilot/AICopilot';
@@ -147,6 +149,7 @@ export default function Dashboard() {
             />
           )}
           {activeView === 'agents' && <AgentsView />}
+          {activeView === 'discovery' && <LeadDiscovery />}
           {activeView === 'team' && (
             <TeamView
               onEdit={handleEditMember}
@@ -224,6 +227,7 @@ export default function Dashboard() {
 function DashboardView({ searchQuery }) {
   return (
     <>
+      <CEOBriefing />
       <GoalTracker />
       <StatCardGrid />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

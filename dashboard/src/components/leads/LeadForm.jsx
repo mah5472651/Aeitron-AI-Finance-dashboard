@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { useLeads } from '../../context/LeadsContext';
-import { LEAD_STAGES } from '../../utils/constants';
+import { LEAD_STAGES, SERVICE_TYPES } from '../../utils/constants';
 
 const emptyForm = {
   contactName: '',
+  email: '',
   companyName: '',
   dealValue: '',
   stage: LEAD_STAGES[0],
+  serviceType: '',
   source: '',
   notes: '',
   lastContacted: '',
@@ -22,9 +24,11 @@ export default function LeadForm({ isOpen, onClose, editLead }) {
     if (editLead) {
       setForm({
         contactName: editLead.contactName,
+        email: editLead.email || '',
         companyName: editLead.companyName,
         dealValue: editLead.dealValue.toString(),
         stage: editLead.stage,
+        serviceType: editLead.serviceType || '',
         source: editLead.source || '',
         notes: editLead.notes || '',
         lastContacted: editLead.lastContacted ? editLead.lastContacted.split('T')[0] : '',
@@ -57,9 +61,11 @@ export default function LeadForm({ isOpen, onClose, editLead }) {
     const now = new Date().toISOString();
     const data = {
       contactName: form.contactName.trim(),
+      email: form.email.trim(),
       companyName: form.companyName.trim(),
       dealValue: parseFloat(form.dealValue),
       stage: form.stage,
+      serviceType: form.serviceType,
       source: form.source.trim(),
       notes: form.notes.trim(),
       lastContacted: form.lastContacted ? new Date(form.lastContacted).toISOString() : null,
@@ -108,6 +114,29 @@ export default function LeadForm({ isOpen, onClose, editLead }) {
               error={errors.companyName}
               placeholder="Tech Corp"
             />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Field
+              label="Email"
+              type="email"
+              value={form.email}
+              onChange={(v) => handleChange('email', v)}
+              placeholder="jane@techcorp.com"
+            />
+            <div>
+              <label className="block text-sm font-medium text-text-muted mb-1.5">Service Type</label>
+              <select
+                value={form.serviceType}
+                onChange={(e) => handleChange('serviceType', e.target.value)}
+                className="w-full px-3 py-2.5 bg-bg border border-border rounded-lg text-text text-sm outline-none transition-colors duration-200 focus:border-accent focus:ring-1 focus:ring-accent/30"
+              >
+                <option value="">Select service...</option>
+                {SERVICE_TYPES.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

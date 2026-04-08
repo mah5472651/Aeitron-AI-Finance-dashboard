@@ -14,6 +14,7 @@ import { SystemHealthProvider } from './context/SystemHealthContext';
 import { ApiCreditsProvider } from './context/ApiCreditsContext';
 import { TeamProvider } from './context/TeamContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { DiscoveryProvider } from './context/DiscoveryContext';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -28,9 +29,11 @@ createRoot(document.getElementById('root')).render(
                 <SystemHealthProvider>
                   <ApiCreditsProvider>
                     <TeamProvider>
-                      <ErrorBoundary>
-                        <App />
-                      </ErrorBoundary>
+                      <DiscoveryProvider>
+                        <ErrorBoundary>
+                          <App />
+                        </ErrorBoundary>
+                      </DiscoveryProvider>
                     </TeamProvider>
                   </ApiCreditsProvider>
                 </SystemHealthProvider>
