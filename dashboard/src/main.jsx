@@ -13,9 +13,11 @@ import { ClientNotesProvider } from './context/ClientNotesContext';
 import { SystemHealthProvider } from './context/SystemHealthContext';
 import { ApiCreditsProvider } from './context/ApiCreditsContext';
 import { TeamProvider } from './context/TeamContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ThemeProvider>
     <AuthProvider>
       <ClientProvider>
         <ExpenseProvider>
@@ -39,5 +41,6 @@ createRoot(document.getElementById('root')).render(
         </ExpenseProvider>
       </ClientProvider>
     </AuthProvider>
+    </ThemeProvider>
   </StrictMode>
 );

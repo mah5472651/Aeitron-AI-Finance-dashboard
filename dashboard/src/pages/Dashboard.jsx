@@ -23,6 +23,7 @@ import InvoiceDetail from '../components/invoices/InvoiceDetail';
 import AutomationGrid from '../components/system/AutomationGrid';
 import AutomationForm from '../components/system/AutomationForm';
 import CreditMonitor from '../components/system/CreditMonitor';
+import TestEmailButton from '../components/system/TestEmailButton';
 import GoalTracker from '../components/cards/GoalTracker';
 import TeamGrid from '../components/team/TeamGrid';
 import TeamForm from '../components/team/TeamForm';
@@ -354,7 +355,10 @@ function SystemView({ onEdit, onRequestDelete }) {
         <div className="lg:col-span-2">
           <AutomationGrid onEdit={onEdit} onRequestDelete={onRequestDelete} />
         </div>
-        <CreditMonitor />
+        <div className="space-y-4">
+          <CreditMonitor />
+          <TestEmailButton />
+        </div>
       </div>
     </>
   );

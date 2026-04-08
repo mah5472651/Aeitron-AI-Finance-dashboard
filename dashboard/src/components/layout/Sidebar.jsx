@@ -2,8 +2,10 @@ import { useState } from 'react';
 import {
   LayoutDashboard, Receipt, Users, Kanban, FileText, Activity,
   LogOut, X, ChevronDown, ChevronRight, PanelLeftClose, PanelLeftOpen, UsersRound, Bot,
+  Sun, Moon,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const NAV_GROUPS = [
   {
@@ -43,6 +45,7 @@ const NAV_GROUPS = [
 
 export default function Sidebar({ open, onClose, activeView, onNavigate }) {
   const { logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [collapsed, setCollapsed] = useState(() => {
     try { return localStorage.getItem('aeitron_sidebar_collapsed') === 'true'; } catch { return false; }
   });
@@ -154,7 +157,18 @@ export default function Sidebar({ open, onClose, activeView, onNavigate }) {
 
         {/* Footer */}
         
-        <div className={`py-4 border-t border-sidebar-border ${collapsed ? 'px-2' : 'px-3'} space-y-3`}>
+        <div className={`py-4 border-t border-sidebar-border ${collapsed ? 'px-2' : 'px-3'} space-y-2`}>
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className={`flex items-center gap-3 w-full rounded-lg text-sm font-medium text-sidebar-text hover:text-sidebar-text-active hover:bg-sidebar-hover transition-all duration-200 cursor-pointer ${collapsed ? 'justify-center p-2.5' : 'px-3 py-2.5'}`}
+            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            {!collapsed && <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>}
+          </button>
+
+          {/* Logout */}
           <button
             onClick={logout}
             className={`flex items-center gap-3 w-full rounded-lg text-sm font-medium text-sidebar-text hover:text-danger hover:bg-white/5 transition-all duration-200 cursor-pointer ${collapsed ? 'justify-center p-2.5' : 'px-3 py-2.5'}`}
