@@ -18,9 +18,9 @@ export default function InvoiceTable({ onEdit, onView, onRequestDelete, globalSe
     if (combinedSearch) {
       result = result.filter(
         (inv) =>
-          inv.invoiceNumber.toLowerCase().includes(combinedSearch) ||
-          inv.clientName.toLowerCase().includes(combinedSearch) ||
-          inv.companyName.toLowerCase().includes(combinedSearch)
+          (inv.invoiceNumber || '').toLowerCase().includes(combinedSearch) ||
+          (inv.clientName   || '').toLowerCase().includes(combinedSearch) ||
+          (inv.companyName  || '').toLowerCase().includes(combinedSearch)
       );
     }
 
@@ -154,7 +154,7 @@ export default function InvoiceTable({ onEdit, onView, onRequestDelete, globalSe
                     </td>
                     <td className="px-4 py-3">
                       <div>
-                        <p className="text-sm font-medium text-text">{invoice.clientName}</p>
+                        <p className="text-sm font-medium text-text">{invoice.clientName || 'Valued Client'}</p>
                         <p className="text-xs text-text-muted">{invoice.companyName}</p>
                       </div>
                     </td>

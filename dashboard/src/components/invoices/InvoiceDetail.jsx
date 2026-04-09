@@ -1,5 +1,5 @@
 import { X, Printer, Download } from 'lucide-react';
-import { formatCurrency, formatDate } from '../../utils/formatters';
+import { formatCurrencyByCode, formatDate } from '../../utils/formatters';
 import { INVOICE_STATUS_COLORS } from '../../utils/constants';
 
 export default function InvoiceDetail({ invoice, onClose }) {
@@ -46,7 +46,7 @@ export default function InvoiceDetail({ invoice, onClose }) {
         <div class="meta">
           <div class="meta-group">
             <h3>Bill To</h3>
-            <p><strong>${invoice.clientName}</strong><br>${invoice.companyName}</p>
+            <p><strong>${invoice.clientName || 'Valued Client'}</strong><br>${invoice.companyName || ''}</p>
           </div>
           <div class="meta-group" style="text-align:right">
             <h3>Invoice Details</h3>
@@ -71,13 +71,13 @@ export default function InvoiceDetail({ invoice, onClose }) {
               <tr>
                 <td>${item.description}</td>
                 <td class="text-right">${item.quantity}</td>
-                <td class="text-right">${formatCurrency(item.unitPrice)}</td>
-                <td class="text-right">${formatCurrency(item.total)}</td>
+                <td class="text-right">${formatCurrencyByCode(item.unitPrice, invoice.currency ?? 'USD')}</td>
+                <td class="text-right">${formatCurrencyByCode(item.total, invoice.currency ?? 'USD')}</td>
               </tr>
             `).join('')}
             <tr class="total-row">
               <td colspan="3" class="text-right">Total</td>
-              <td class="text-right">${formatCurrency(invoice.total)}</td>
+              <td class="text-right">${formatCurrencyByCode(invoice.total, invoice.currency ?? 'USD')}</td>
             </tr>
           </tbody>
         </table>
@@ -164,7 +164,7 @@ export default function InvoiceDetail({ invoice, onClose }) {
           <div className="grid grid-cols-2 gap-6">
             <div>
               <p className="text-xs uppercase tracking-wider text-text-muted font-semibold mb-2">Bill To</p>
-              <p className="text-sm font-medium text-text">{invoice.clientName}</p>
+              <p className="text-sm font-medium text-text">{invoice.clientName || 'Valued Client'}</p>
               <p className="text-sm text-text-muted">{invoice.companyName}</p>
             </div>
             <div className="text-right">
@@ -198,15 +198,15 @@ export default function InvoiceDetail({ invoice, onClose }) {
                   <tr key={i} className="border-t border-border-light">
                     <td className="px-4 py-3 text-sm text-text">{item.description}</td>
                     <td className="px-4 py-3 text-sm text-text-muted text-right">{item.quantity}</td>
-                    <td className="px-4 py-3 text-sm text-text-muted text-right">{formatCurrency(item.unitPrice)}</td>
-                    <td className="px-4 py-3 text-sm font-medium text-text text-right">{formatCurrency(item.total)}</td>
+                    <td className="px-4 py-3 text-sm text-text-muted text-right">{formatCurrencyByCode(item.unitPrice, invoice.currency ?? 'USD')}</td>
+                    <td className="px-4 py-3 text-sm font-medium text-text text-right">{formatCurrencyByCode(item.total, invoice.currency ?? 'USD')}</td>
                   </tr>
                 ))}
               </tbody>
               <tfoot>
                 <tr className="border-t-2 border-text">
                   <td colSpan={3} className="px-4 py-3 text-sm font-semibold text-text text-right">Total</td>
-                  <td className="px-4 py-3 text-base font-bold text-text text-right">{formatCurrency(invoice.total)}</td>
+                  <td className="px-4 py-3 text-base font-bold text-text text-right">{formatCurrencyByCode(invoice.total, invoice.currency ?? 'USD')}</td>
                 </tr>
               </tfoot>
             </table>
