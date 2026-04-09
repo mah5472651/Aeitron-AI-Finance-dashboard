@@ -9,6 +9,7 @@ import { ExpenseProvider } from './context/ExpenseContext';
 import { LeadProvider } from './context/LeadsContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { InvoiceProvider } from './context/InvoiceContext';
+import { InvoicePresetsProvider } from './context/InvoicePresetsContext';
 import { ClientNotesProvider } from './context/ClientNotesContext';
 import { SystemHealthProvider } from './context/SystemHealthContext';
 import { ApiCreditsProvider } from './context/ApiCreditsContext';
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')).render(
           <LeadProvider>
             <NotificationProvider>
               <InvoiceProvider>
+                <InvoicePresetsProvider>
                 <ClientNotesProvider>
                 <SystemHealthProvider>
                   <ApiCreditsProvider>
@@ -38,6 +40,7 @@ createRoot(document.getElementById('root')).render(
                   </ApiCreditsProvider>
                 </SystemHealthProvider>
               </ClientNotesProvider>
+                </InvoicePresetsProvider>
               </InvoiceProvider>
             </NotificationProvider>
           </LeadProvider>

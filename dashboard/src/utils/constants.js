@@ -116,6 +116,24 @@ export const TEAM_STATUS_COLORS = {
 
 export const REVENUE_GOAL = 1_000_000;
 
+export const PAYMENT_ACCOUNTS_STORAGE_KEY = 'aeitron_payment_accounts';
+export const TERMS_TEMPLATES_STORAGE_KEY  = 'aeitron_terms_templates';
+export const NOTES_PRESETS_STORAGE_KEY    = 'aeitron_notes_presets';
+
+export const CURRENCIES = [
+  { code: 'USD', symbol: '$',  locale: 'en-US' },
+  { code: 'EUR', symbol: '€',  locale: 'de-DE' },
+  { code: 'GBP', symbol: '£',  locale: 'en-GB' },
+  { code: 'BDT', symbol: '৳', locale: 'bn-BD' },
+];
+
+export const BILL_FROM_DEFAULTS = {
+  name: 'Aeitron AI',
+  address: '123 Business Lane',
+  city: 'Dhaka, Bangladesh',
+  taxId: '',
+};
+
 export const AUTOMATION_STATUSES = ['Healthy', 'Error', 'Paused'];
 
 export const DEFAULT_API_SERVICES = [

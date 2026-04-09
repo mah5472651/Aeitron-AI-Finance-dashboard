@@ -154,3 +154,29 @@ input[type="number"] {
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
+
+
+@media print {
+  body > *:not(#invoice-print-root) { display: none !important; }
+  #invoice-preview-content { display: block !important; }
+
+  /* Preserve all colors & backgrounds exactly — no browser grayscale override */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Keep key sections together — no page breaks mid-table or mid-seal */
+  #invoice-preview-content table,
+  #invoice-preview-content .signature-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Clean document surface */
+  #invoice-preview-content {
+    background-color: #ffffff !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}

@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { FileText, Search, Eye, Edit3, Trash2 } from 'lucide-react';
 import { useInvoices } from '../../context/InvoiceContext';
 import { INVOICE_STATUSES, INVOICE_STATUS_COLORS } from '../../utils/constants';
-import { formatCurrency, formatDate } from '../../utils/formatters';
+import { formatCurrency, formatCurrencyByCode, formatDate } from '../../utils/formatters';
 
 export default function InvoiceTable({ onEdit, onView, onRequestDelete, globalSearch = '' }) {
   const { invoices, dispatch } = useInvoices();
@@ -170,7 +170,7 @@ export default function InvoiceTable({ onEdit, onView, onRequestDelete, globalSe
                       {formatDate(invoice.dueDate)}
                     </td>
                     <td className="px-4 py-3">
-                      <span className="text-sm font-semibold text-text">{formatCurrency(invoice.total)}</span>
+                      <span className="text-sm font-semibold text-text font-mono">{formatCurrencyByCode(invoice.total, invoice.currency ?? 'USD')}</span>
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-1">

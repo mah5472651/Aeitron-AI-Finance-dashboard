@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
-import { INVOICES_STORAGE_KEY } from '../utils/constants';
+import { INVOICES_STORAGE_KEY, BILL_FROM_DEFAULTS } from '../utils/constants';
 
 const InvoiceContext = createContext(null);
 
@@ -22,10 +22,26 @@ function invoiceReducer(state, action) {
   }
 }
 
+function migrateInvoice(inv) {
+  return {
+    currency: 'USD',
+    taxRate: 0,
+    discount: 0,
+    taxAmount: 0,
+    subtotal: inv.subtotal ?? inv.total ?? 0,
+    paymentInstructions: { bank: {}, paypal: {}, wise: {} },
+    terms: '',
+    signatureName: '',
+    billFrom: { ...BILL_FROM_DEFAULTS },
+    ...inv,
+  };
+}
+
 function loadFromStorage() {
   try {
     const stored = localStorage.getItem(INVOICES_STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [];
+    const invoices = stored ? JSON.parse(stored) : [];
+    return invoices.map(migrateInvoice);
   } catch {
     return [];
   }
