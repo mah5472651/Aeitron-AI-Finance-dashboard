@@ -80,7 +80,7 @@ Instead of using multiple disconnected tools, agencies can manage their entire w
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 Aeitron AI Agency OS follows a modular architecture designed for scalability and maintainability.
 
@@ -104,7 +104,7 @@ Reports & Analytics
 
 ---
 
-## 🛠 Technology Stack
+## Technology Stack
 
 ### Frontend
 
